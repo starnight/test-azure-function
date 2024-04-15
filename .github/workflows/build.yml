@@ -31,4 +31,4 @@ jobs:
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
         env:
           AZURE_FUNCTIONAPP_NAME: 'test-myfunction1'
-          AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
+          AZURE_FUNCTIONAPP_PACKAGE_PATH: 'main'
