@@ -11,8 +11,8 @@ import (
 )
 
 var products map[int]Product = map[int]Product{
-    1: {"Milk"},
-    2: {"Butter"},
+    1: {"Coffee Milk"},
+    2: {"Salted Butter"},
 }
 
 type Product struct {
