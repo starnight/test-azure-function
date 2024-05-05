@@ -10,7 +10,7 @@ function show_menu() {
     var data = JSON.parse(this.responseText);
     var table = document.getElementById("menu");
     for(var k in data) {
-      var row = table.insertRow(0);
+      var row = table.insertRow();
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       cell1.innerHTML = k;

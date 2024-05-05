@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "routes": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/{*restOfPath}"
+      },
+      "backendUri": "https://myappfunction1.z5.web.core.windows.net/{restOfPath}"
+    },
+    "api": {
+      "matchCondition": {
+	"methods": [ "GET", "POST" ],
+        "route": "/api/{*restOfPath}"
+      },
+      "backendUri": "https://localhost/api/{restOfPath}"
+    }
+  }
+}

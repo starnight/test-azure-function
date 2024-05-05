@@ -37,3 +37,12 @@ jobs:
         env:
           AZURE_FUNCTIONAPP_NAME: 'test-myfunction1'
           AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
+
+      - name: 'Upload to blob storage'
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az storage blob upload-batch --account-name ${{ env.AZURE_STORAGE_NAME }} -d '$web' -s src/resources --overwrite
+        env:
+          AZURE_STORAGE_NAME: 'myappfunction1'
