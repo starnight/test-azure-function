@@ -3,17 +3,12 @@
 package main
 
 import (
-    "embed"
-    "io/fs"
     "net/http"
     "os"
     "strconv"
 
     "github.com/gin-gonic/gin"
 )
-
-//go:embed resources/*
-var content embed.FS
 
 var products map[int]Product = map[int]Product{
     1: {"Coffee Milk"},
@@ -57,8 +52,7 @@ func get_port() string {
 func main() {
     r := gin.Default()
 
-    rs, _ := fs.Sub(content, "resources")
-    r.StaticFS("/resources", http.FS(rs))
+    r.StaticFS("/resources", http.Dir("resources"))
     r.GET("/api/products", getProducts)
     r.GET("/api/products/:id", getProduct)
     r.Run(get_port())

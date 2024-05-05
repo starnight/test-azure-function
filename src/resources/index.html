@@ -1,0 +1,27 @@
+<html>
+<body>
+<h1>Welcome</h1>
+<table id="menu"></table>
+
+<script>
+function show_menu() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    var data = JSON.parse(this.responseText);
+    var table = document.getElementById("menu");
+    for(var k in data) {
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = k;
+      cell2.innerHTML = data[k]["Name"];
+    }
+  };
+  xhttp.open("GET", "/api/products", true);
+  xhttp.send();
+}
+
+show_menu();
+</script>
+</body>
+</html>
