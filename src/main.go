@@ -51,6 +51,7 @@ func get_port() string {
 
 func main() {
     r := gin.Default()
+    r.StaticFile("/welcome", "./resources/welcome.html")
     r.GET("/api/products", getProducts)
     r.GET("/api/products/:id", getProduct)
     r.Run(get_port())
